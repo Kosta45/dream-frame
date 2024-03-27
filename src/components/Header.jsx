@@ -1,17 +1,23 @@
+import React, { useState } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
 
 import { brainwave } from "../assets";
 import { navigation } from "../constants";
 import Button from "./Button";
+import MenuSvg from "../assets/svg/MenuSvg";
+import { HamburgerMenu } from "./design/Header";
 
 const Header = () => {
   const pathname = useLocation();
 
+  //states
+  const [openNavigation, setOpenNavigation] = useState(true);
+
   return (
     <div
-      className="fixed top-0 left-0 w-full z-50 bg-n-8/90 
-    backdrop-blur-sm border-b border-n-6 lg:bg-n-8/90
-    lg:backdrop-blur-sm"
+      className={`fixed top-0 left-0 w-full z-50 
+    bg-n-8/90 backdrop-blur-sm border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm 
+    ${openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"}`}
     >
       <div
         className="flex items-center px-5 lg:px-7.5
@@ -22,8 +28,10 @@ const Header = () => {
         </a>
 
         <nav
-          className="hidden fixed top-{5rem} left-0 right-0 
-        bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent"
+          className={`${
+            openNavigation ? "flex" : "hidden"
+          } fixed top-{5rem} left-0 right-0 
+        bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}
         >
           <div
             className="relative z-2 flex flex-col items-center 
@@ -46,6 +54,8 @@ const Header = () => {
                 {item.title}
               </a>
             ))}
+
+            <HamburgerMenu />
           </div>
         </nav>
 
@@ -58,6 +68,9 @@ const Header = () => {
         </a>
         <Button className="hidden lg:flex" href="#login">
           Sign in
+        </Button>
+        <Button className={`ml-auto lg:hidden`}>
+          <MenuSvg />
         </Button>
       </div>
     </div>
