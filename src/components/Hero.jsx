@@ -10,7 +10,7 @@ import { heroBackground, robot } from "../assets";
 const Hero = () => {
   return (
     <Section
-      className="pt-[12rem] mt-[-5.25]"
+      className="pt-[12rem] mt-[-5.25rem]"
       crosses
       crossesOffset="lg:translate-y-[5.25rem]"
       customPaddings
@@ -59,7 +59,7 @@ const Hero = () => {
                   className="w-full scale-[1.7] translate-y-[8%]
                   md:scale-[1] md:translate-y-[-10%] lg:translate-y-[-23%]"
                   width={1024}
-                  height={490}
+                  height={470}
                 />
               </div>
             </div>
