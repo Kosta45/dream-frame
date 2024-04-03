@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import Section from "./Section";
 import Button from "./Button";
 import { BackgroundCircles, BottomLine, Gradient } from "./design/Hero";
+import Generating from "./Generating";
 import { heroIcons } from "../constants";
 import { ScrollParallax } from "react-just-parallax";
 
@@ -66,6 +67,11 @@ const Hero = () => {
                   md:scale-[1] md:translate-y-[-10%] lg:translate-y-[-23%]"
                   width={1024}
                   height={470}
+                />
+
+                <Generating
+                  className="absolute left-4 right-4 bottom-5 md:left-1/2 
+                md:right-auto md:bottom-8 md:w-[31rem] md:-translate-x-1/2"
                 />
 
                 <ScrollParallax isAbsolutelyPositioned>
