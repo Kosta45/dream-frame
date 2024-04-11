@@ -2,6 +2,7 @@ import React from "react";
 
 import Section from "./Section";
 import Heading from "./Heading";
+import Generating from "./Generating";
 
 import { service1, service2, service3, check } from "../assets";
 import { brainwaveServices, brainwaveServicesIcons } from "../constants";
@@ -51,7 +52,15 @@ const Services = () => {
                 ))}
               </ul>
             </div>
+
+            <Generating
+              className="absolute left-4 right-4 bottom-4
+            border-n-1/10 border lg:left-1/2 lg-right-auto lg:bottom-8
+            lg:-translate-x-1/2"
+            />
           </div>
+
+          <div></div>
         </div>
       </div>
     </Section>
