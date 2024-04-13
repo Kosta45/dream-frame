@@ -84,11 +84,26 @@ export const brainwaveServices = [
 ];
 
 export const brainwaveServicesIcons = [
-    recording03,
-    recording01,
-    disc02,
-    chromecast,
-    sliders04,
+    {
+        imageUrl: recording03,
+        activeTab: false,
+    },
+    {
+        imageUrl: recording01,
+        activeTab: true,
+    },
+    {
+        imageUrl: disc02,
+        activeTab: false,
+    },
+    {
+        imageUrl: chromecast,
+        activeTab: false,
+    },
+    {
+        imageUrl: sliders04,
+        activeTab: false,
+    }
 ];
 
 export const roadmap = [

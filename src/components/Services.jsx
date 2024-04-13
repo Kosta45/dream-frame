@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import Section from "./Section";
 import Heading from "./Heading";
@@ -6,8 +6,31 @@ import Generating from "./Generating";
 
 import { service1, service2, service3, check } from "../assets";
 import { brainwaveServices, brainwaveServicesIcons } from "../constants";
+import {
+  PhotoChatMessage,
+  Gradient,
+  VideoBar,
+  VideoChatMessage,
+} from "./design/Services";
 
 const Services = () => {
+  //refs
+  const videoTab = useRef();
+  //states
+  const [videoGenerationTabs, setVideoGenerationTabs] = useState([
+    ...brainwaveServicesIcons,
+  ]);
+
+  const toogleActiveTab = (index) => {
+    const updatedTabs = videoGenerationTabs.map((item, i) => ({
+      ...item,
+      activeTab: i === index ? true : false,
+    }));
+    setVideoGenerationTabs(updatedTabs);
+  };
+
+  useEffect(() => {}, [videoGenerationTabs]);
+
   return (
     <Section id="how-to-use">
       <div className="container">
@@ -61,7 +84,94 @@ const Services = () => {
             />
           </div>
 
-          <div></div>
+          <div
+            className="relative z-1 grid gap-5
+          lg:grid-cols-2"
+          >
+            <div
+              className="relative min-h-[39rem] 
+            border border-n-1/10 rounded-3xl overflow-hidden"
+            >
+              <div className="absolute inset-0">
+                <img
+                  src={service2}
+                  alt="robot"
+                  className="h-full w-full object-cover"
+                  width={630}
+                  height={750}
+                />
+              </div>
+              <div
+                className="absolute inset-0 flex 
+              flex-col justify-end p-8 bg-gradient-to-b
+              from-n-8/0 to-n-8/90 lg:p-15"
+              >
+                <h4 className="h-4 mb-4">Photo editing</h4>
+                <p className="body-2 mb-[3rem] text-n-3">
+                  Automatically enhance your photos using our AI app&apos;s
+                  photo editing feature. Try it now!
+                </p>
+              </div>
+              <PhotoChatMessage />
+            </div>
+
+            <div className="p-4 bg-n-7 rounded-3xl overflow-hidden lg:min-h-[46rem]">
+              <div className="py-12 px-4 xl:px-8">
+                <h4 className="h4 mb-4">Video generation</h4>
+                <p className="body-2 mb-[2rem] text-n-3">
+                  The world's most powerful AI photo and video art generation
+                  engine. What will you create?
+                </p>
+                <ul className="flex items-center justify-between">
+                  {videoGenerationTabs.map((item, index) => (
+                    <li
+                      ref={videoTab}
+                      onClick={() => toogleActiveTab(index)}
+                      key={index}
+                      className={`flex items-center justify-center rounded-2xl cursor-pointer
+                    ${
+                      item.activeTab
+                        ? "w-[3rem] h-[3rem] p-0.25 bg-conic-gradient md:w-[4.5rem] md: md:h-[4.5rem]"
+                        : "flex w-10 bg-n-6 md:w-15 md:h-15"
+                    }`}
+                    >
+                      <div
+                        className={
+                          item.activeTab
+                            ? "flex items-center justify-center w-full h-full bg-n-7 rounded-[1rem]"
+                            : ""
+                        }
+                      >
+                        <img
+                          src={item.imageUrl}
+                          width={24}
+                          height={24}
+                          alt={item}
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div
+                className="relative h-[20rem] bg-n-8 rounded-xl overflow-hidden
+              md:h-[25rem]"
+              >
+                <img
+                  src={service3}
+                  alt="Scary robot"
+                  className="w-full h-full object-cover"
+                  width={520}
+                  height={400}
+                />
+
+                <VideoChatMessage />
+                <VideoBar />
+              </div>
+            </div>
+          </div>
+          <Gradient />
         </div>
       </div>
     </Section>
