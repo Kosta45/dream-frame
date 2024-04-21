@@ -1,10 +1,10 @@
 import React from "react";
 import Section from "./Section";
 import Heading from "./Heading";
+import Tagline from "./Tagline";
 
 import { roadmap } from "../constants";
 import { check2, grid, loading1 } from "../assets";
-import Tagline from "./Tagline";
 
 const Roadmap = () => {
   return (
@@ -27,8 +27,8 @@ const Roadmap = () => {
                 item.colorful ? "bg-conic-gradient" : "bg-n-6"
               }`}
               >
-                <div>
-                  <div className="">
+                <div className="relative p-8 bg-n-8 rounded-[2rem] overflow-hidden xl:p-15">
+                  <div className="absolute top-0 left-0 max-w-full">
                     <img
                       src={grid}
                       className="w-full"
@@ -37,10 +37,12 @@ const Roadmap = () => {
                       alt="Grid"
                     />
                   </div>
+
                   <div className="relative z-1">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between max-w-[27rem] mb-8 md:mb-20">
                       <Tagline>{item.date}</Tagline>
-                      <div>
+
+                      <div className="flex items-center px-4 py-1 bg-n-1 rounded text-n-8">
                         <img
                           src={item.status === "done" ? check2 : loading1}
                           alt={status}
@@ -51,7 +53,8 @@ const Roadmap = () => {
                         <div className="tagline">{status}</div>
                       </div>
                     </div>
-                    <div className="mb-10">
+
+                    <div className="mb-10 -my-10 -mx-15">
                       <img
                         src={item.imageUrl}
                         alt={item.title}
